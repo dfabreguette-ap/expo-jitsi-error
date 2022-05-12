@@ -1,10 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View, Button } from "react-native";
+import BLJitsiShow from "./jitsi";
+import React from "react";
 
 export default function App() {
+  const [showJitsi, setShowJitsi] = React.useState(false);
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      {showJitsi ? (
+        <BLJitsiShow></BLJitsiShow>
+      ) : (
+        <Button title="JITSI" onPress={() => setShowJitsi(true)}></Button>
+      )}
       <StatusBar style="auto" />
     </View>
   );
@@ -13,8 +21,10 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    width: "100%",
+    height: "100%",
+    backgroundColor: "#eee",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
