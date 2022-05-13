@@ -215,7 +215,7 @@ dependencies {
     
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
-    implementation ('org.jitsi.react:jitsi-meet-sdk:3+') {
+    implementation ('org.jitsi.react:jitsi-meet-sdk:4+') {
 //        exclude group: 'com.facebook',module:'hermes'
         transitive = true
     }
