@@ -36,7 +36,8 @@ allprojects {
         mavenCentral()
         jcenter()
         maven {
-            url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"
+            url "file:/Users/davidfabreguette/Sites/jitsi_maven"
+//            url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"
         }
         maven { url 'https://www.jitpack.io' }
     }

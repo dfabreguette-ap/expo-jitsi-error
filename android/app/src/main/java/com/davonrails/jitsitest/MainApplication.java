@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.res.Configuration;
 import androidx.annotation.NonNull;
+import com.davonrails.jitsitest.jitsi.RNJitsiMeetPackage;
 
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
@@ -20,6 +21,7 @@ import com.facebook.react.bridge.JSIModulePackage;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+import androidx.annotation.Nullable;
 
 public class MainApplication extends Application implements ReactApplication {
   private final ReactNativeHost mReactNativeHost = new ReactNativeHostWrapper(
@@ -36,13 +38,18 @@ public class MainApplication extends Application implements ReactApplication {
       List<ReactPackage> packages = new PackageList(this).getPackages();
       // Packages that cannot be autolinked yet can be added manually here, for example:
       // packages.add(new MyReactNativePackage());
-      // packages.add(new RNJitsiMeetPackage());
+      packages.add(new RNJitsiMeetPackage());
       return packages;
     }
 
     @Override
     protected String getJSMainModuleName() {
       return "index";
+    }
+    
+    @Override
+    protected @Nullable String getBundleAssetName() {
+      return "app.bundle";
     }
   });
 

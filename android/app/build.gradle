@@ -78,6 +78,8 @@ import com.android.build.OutputFile
  */
 
 project.ext.react = [
+    entryFile: "index.js",
+    bundleAssetName: "app.bundle",
     enableHermes: (findProperty('expo.jsEngine') ?: "jsc") == "hermes",
     cliPath: new File(["node", "--print", "require.resolve('react-native/package.json')"].execute(null, rootDir).text.trim()).getParentFile().getAbsolutePath() + "/cli.js",
     hermesCommand: new File(["node", "--print", "require.resolve('hermes-engine/package.json')"].execute(null, rootDir).text.trim()).getParentFile().getAbsolutePath() + "/%OS-BIN%/hermesc",
@@ -181,6 +183,16 @@ android {
 
         }
     }
+    packagingOptions {
+        pickFirst 'lib/x86/libc++_shared.so'
+        pickFirst 'lib/x86/libjsc.so'
+        pickFirst 'lib/x86_64/libjsc.so'
+        pickFirst 'lib/arm64-v8a/libjsc.so'
+        pickFirst 'lib/arm64-v8a/libc++_shared.so'
+        pickFirst 'lib/x86_64/libc++_shared.so'
+        pickFirst 'lib/armeabi-v7a/libc++_shared.so'
+        pickFirst 'lib/armeabi-v7a/libjsc.so'
+    }
 }
 
 dependencies {
@@ -215,7 +227,7 @@ dependencies {
     
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
-    implementation ('org.jitsi.react:jitsi-meet-sdk:4+') {
+    implementation ('org.jitsi.react:jitsi-meet-sdk:3+') {
 //        exclude group: 'com.facebook',module:'hermes'
         transitive = true
     }
